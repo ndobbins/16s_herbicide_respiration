@@ -1,0 +1,55 @@
+####################################################################
+# Script Name    : PICRUSt2_from_DADA2                                                                                      
+# Description    : Bash wrapper for executing PICRUSt2 pipeline
+# Inputs         : DADA2 outputs - ASVs FASTA and ASV count table
+# Author         : Nathan Dobbins                                            
+# Email          : nathandobbins96@gmail.com           
+# Citations: 
+# https://github.com/picrust/picrust2/wiki/PICRUSt2-Tutorial-%28v2.3.0-beta%29#minimum-requirements-to-run-full-tutorial
+
+####################################################################
+
+# -------- BEFORE RUNNING --------
+# Ensure that CONDA has been installed
+# CONDA installation instructions found here: https://gist.github.com/kauffmanes/5e74916617f9993bc3479f401dfec7da
+# Must install from WSL2 environment (LINUX)
+
+
+# -------- OPTIONAL INSTALLATION SECTION --------
+# If PICRUSt2 is not already installed, uncomment the two lines below to install it via conda
+
+# echo "Installing PICRUSt2..."
+# conda create -n picrust2_env -c conda-forge -c bioconda picrust2 -y
+
+# -----------------------------------------------
+
+# -------- Activate PICRUsT2 using Conda --------
+echo "Activating a PICRUsT2 Environment..."
+conda activate picrust2_env
+
+# -----------------------------------------------
+
+# -------- Running PICRUsT2 --------
+# after "-" put the number of cores you want to use
+# I recommend at most putting half of your maximum number of cores
+# If you cannot figure out your number of cores, you can leave it as 1 for single core (will be slow)
+# if the program crashes try lowering the number of cores you put
+
+echo "Running PICRUsT2 Pipeline"
+picrust2_pipeline.py \
+  -s "/mnt/c/Users/Nathan/Documents/Practicum/herbicide_soil_DOBBINS/output/ASVs.fa" \
+  -i "/mnt/c/Users/Nathan/Documents/Practicum/herbicide_soil_DOBBINS/output/ASVs_counts.tsv" \
+  -o picrust2_out_pipeline_04 \
+# put the number of cores after the "p" below
+  -p 20
+
+# -------- Adding Pathway Descriptions --------
+echo "Adding pathway descriptions..."
+add_descriptions.py \
+  -i picrust2_out_pipeline_04/pathways_out/path_abun_unstrat.tsv.gz \
+  -m METACYC \
+  -o picrust2_out_pipeline_04/pathways_out/path_abun_unstrat_descrip.tsv.gz
+
+
+# -------- DONE --------
+echo "PICRUSt2 analysis completed."
