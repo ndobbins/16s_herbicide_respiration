@@ -57,7 +57,3 @@ This script analyzes soil respiration data from Excel files across multiple samp
 - CO2 respiration plots (.png)
 - PICRUsT2 functional predictions (folder)
 
-## Processing Time
-
-Complete pipeline: 1-3 hours depending on dataset size.
-
