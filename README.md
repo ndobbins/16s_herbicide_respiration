@@ -3,7 +3,8 @@ Pipeline for analyzing 16S rRNA sequencing data from soil samples to evaluate di
 information on the scripts used, what order to run them in, how to setup the file directory, and software needed
 
 ## Prerequisites
-- Windows Subsystem for Linux 2 (WSL2) with Ubuntu
+- Windows Subsystem for Linux 2 (WSL2) with Ubuntu: in PowerShell: "wsl –install"
+  To launch WSL after install, in PowerShell: "wsl"
 - Conda installed in WSL2 with PICRUsT2 environment (conda create -n picrust2_env -c conda-forge -c bioconda picrust2 -y) : https://docs.conda.io/projects/conda/en/stable/user-guide/install/linux.html
 - When installing Conda, do it from the WSL terminal
 - R (version 4.0+): https://www.r-project.org/
