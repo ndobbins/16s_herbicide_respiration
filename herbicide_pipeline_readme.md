@@ -1,5 +1,5 @@
 # Herbicide Soil Microbiome Analysis Pipeline
-
+Pipeline for analyzing 16S rRNA sequencing data from soil samples to evaluate diversity metrics, community composition, and functional and taxonomic profiles.
 information on the scripts used, what order to run them in, how to setup the file directory, and software needed
 
 ## Prerequisites
@@ -58,4 +58,5 @@ This script analyzes soil respiration data from Excel files across multiple samp
 - PICRUsT2 functional predictions (folder)
 
 ## Processing Time
+
 Complete pipeline: 1-3 hours depending on dataset size.
